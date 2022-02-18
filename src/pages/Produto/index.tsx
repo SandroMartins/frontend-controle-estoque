@@ -56,8 +56,7 @@ const Produto: React.FC = () => {
                 authorization: authorization
             }
         }).then(response => {
-            setProdutos(response.data.content);
-            
+            setProdutos(response.data.content);            
         });       
     },[setProdutos]);
 
@@ -74,7 +73,7 @@ const Produto: React.FC = () => {
         }catch(err) {
             alert('Erro ao excluir o produto!');
         }
-    },[setProdutos]);
+    },[setProdutos, produtos]);
 
     function handleEdit(id: number) {
         history.push(`/salvarProduto/${id}`)

@@ -33,7 +33,7 @@ const SalvarProduto: React.FC = () => {
     const {id} = useParams<ParamsProps>();
     const {authorization} = useAuth();
     const [produto, setProduto] = useState<RegistrarProdutoFormData>();
-    const [tipoProduto, setTipoProduto] = useState('');
+    const [tipoProduto, setTipoProduto] = useState('1');
     const history = useHistory();
 
     useEffect(() => {
@@ -69,11 +69,17 @@ const SalvarProduto: React.FC = () => {
                     }
                 });
             } else {
-                await api.put(`/produtos/${id}`, data, {
+                await api.put(`/produtos/${id}`, {
+                    id,
+                    tipoProduto,
+                    descricao: data.descricao,
+                    valorFornecedor: data.valorFornecedor
+                }, {
                     headers: {
                         authorization: authorization
                     }
                 });
+                
             }
             
             alert('Cadastro salvo com sucesso!');
@@ -91,7 +97,7 @@ const SalvarProduto: React.FC = () => {
                     <h1>Gerenciamento de produtos</h1>
                     <Form initialData={produto} ref={formRef} onSubmit={handleSubmit}>
 
-                        <Input name='descricao' icon={FiUser} placeholder='Descrição' />
+                        <Input name='descricao' placeholder='Descrição' />
                         <Select 
                             labelId="comboBox"
                             id="comboBoxId"
@@ -103,7 +109,7 @@ const SalvarProduto: React.FC = () => {
                             <MenuItem className='menuItemComboBox' value={2}>Eletrodométisco</MenuItem>
                             <MenuItem className='menuItemComboBox' value={3}>Móvel</MenuItem>
                         </Select>
-                        <Input name='valorFornecedor' type={'number'} icon={FiLock} placeholder='Valor Fornecedor' />
+                        <Input name='valorFornecedor' type={'number'} placeholder='Valor Fornecedor' />
 
                         <Button type='submit'>Salvar</Button>
                         <Link to="/produto">

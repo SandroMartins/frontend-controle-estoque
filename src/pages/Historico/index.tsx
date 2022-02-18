@@ -1,9 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from '../../hooks/AuthContext';
 import api from '../../services/api';
 import {Link, useHistory, useParams} from 'react-router-dom';
 import HeaderComponent from '../../components/Header';
-import {Table, Button} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
 
 import {FiArrowLeft} from 'react-icons/fi';
 

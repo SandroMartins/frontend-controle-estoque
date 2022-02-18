@@ -95,6 +95,12 @@ export const TabelaProduto = styled.div`
         &:hover {
                 color: ${shade(0.2, '#0067B0')};
                 text-decoration: underline;
-            }
+        }
+
+        svg {
+            margin-left: 15px;
+            margin-right: 5px;
+            color: #0067B0;
+        }
     }
 `;

@@ -46,28 +46,20 @@ const SaidaEstoqueProduto: React.FC = () => {
         }).then(response => {
             setProduto(response.data);
         });       
-    },[setProduto]);
-
-    const handleProduto = useCallback(async (data: ProdutoProps) => {
-        const response = await api.get(`/produtos/${produtoId}`, {
-            headers: {
-                authorization: authorization
-            }
-        });
-
-        setProduto(response.data);
-    }, []);
+    },[setProduto, produto]);
     
     const handleSubmit = useCallback(async (data: MovimentarProdutoFormData) => {
         try {
             data.produtoId = produtoId;
             data.tipoMovimentacao = 2;
-            console.log(produto?.quantidade);
+            console.log(produto);
+    
             if(produto?.quantidade != undefined && produto?.quantidade < data.quantidade) {
                 alert('Quantidade de produto insuficiente no estoque.');
                 return;
             }
-
+            console.log(data);
+            console.log(produto);
             await api.post('/movimentacoes', data, {
                 headers: {
                     authorization: authorization
@@ -79,7 +71,7 @@ const SaidaEstoqueProduto: React.FC = () => {
         }catch(err) {
             alert('Erro ao movimentar o estoque!');
         }
-    },[]);
+    },[setProduto, produto]);
     return (
         <>
             <Header />

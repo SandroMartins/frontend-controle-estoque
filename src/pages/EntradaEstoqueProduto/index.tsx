@@ -56,7 +56,7 @@ const EntradaEstoqueProduto: React.FC = () => {
                         <Input name='quantidade' type="number" placeholder='Quantidade' />
                         
                         <Button type='submit'>Salvar</Button>
-                        <Link to={`/estoque/${produtoId}`}>
+                        <Link to={`/estoque`}>
                             <FiArrowLeft />
                             Voltar
                         </Link>

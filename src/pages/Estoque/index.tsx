@@ -3,7 +3,9 @@ import { useAuth } from '../../hooks/AuthContext';
 import api from '../../services/api';
 import {Link, useHistory} from 'react-router-dom';
 import HeaderComponent from '../../components/Header';
-import {Table, Button} from 'react-bootstrap';
+import {Table} from 'react-bootstrap';
+
+import {FiArrowRight} from 'react-icons/fi';
 
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
@@ -115,13 +117,18 @@ const Estoque: React.FC = () => {
                                     <td>{prod.totalLucro}</td>
                                     <td>
                                         <button onClick={() => {handleHistorico(prod.id)}}>
+                                            <FiArrowRight/> 
                                             Histórico
                                         </button>
+                                        |
                                         <button onClick={() => {handleEntrada(prod.id)}} >
-                                            - Entrada
+                                            <FiArrowRight/>
+                                            Entrada
                                         </button>
+                                        |
                                         <button onClick={() => {handleSaida(prod.id)}} >
-                                            - Saida
+                                            <FiArrowRight/>
+                                            Saida
                                         </button>
                                     </td>
                                 </tr>

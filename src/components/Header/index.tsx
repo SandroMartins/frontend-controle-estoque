@@ -29,6 +29,7 @@ const HeaderComponent: React.FC = () => {
             }
         }).then(response => {
             setUsuario(response.data);
+            console.log(response.data);
         });
         
     },[setUsuario]);
